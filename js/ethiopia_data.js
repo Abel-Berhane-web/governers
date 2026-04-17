@@ -2,7 +2,7 @@ const windowGovernorsData = [
   {
     "name": "Abiy Ahmed Ali",
     "state": "Prime Minister",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Prime_Minister_Abiy_Ahmed_Ali_%28cropped%29.jpg/500px-Prime_Minister_Abiy_Ahmed_Ali_%28cropped%29.jpg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Prime_Minister_of_Ethiopia_Abiy_Ahmed_Ali_%28cropped%29.jpg",
     "summary": "Incumbent Prime Minister of Ethiopia and leader of the Prosperity Party.",
     "deep_bio": "Abiy Ahmed Ali is the 4th Prime Minister of the Federal Democratic Republic of Ethiopia. Born on August 15, 1976, he came to power in 2018 and has led the country through sweeping political and economic reforms. A key figure in the general elections, he leads the incumbent Prosperity Party. He was awarded the 2019 Nobel Peace Prize for his efforts to resolve the border conflict with Eritrea. During the election period, he stands as the most prominent politically exposed person, orchestrating the nation's political, economic, and infrastructure developments.",
     "real_links": [
