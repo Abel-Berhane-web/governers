@@ -1,56 +1,532 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>America's Governors | Social Media Directory</title>
-    <meta name="description" content="Follow America's Governors as they lead bipartisan solutions to improve lives through state government.">
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts for modern typography -->
+    <title>Ethiopian Elections 2026 | Election Portal</title>
+    <meta name="description" content="Comprehensive open-data portal tracking Ethiopian political leaders and parties.">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Social Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Outfit:wght@300;400;500;700;900&family=Noto+Sans+Ethiopic:wght@400;700;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .intro-hero {
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-title {
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.9;
+            letter-spacing: -2px;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .amharic-sub {
+            font-family: 'Noto Sans Ethiopic', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-top: 1rem;
+            display: block;
+            color: var(--text-main);
+        }
+
+        .hero-link {
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: underline;
+            text-underline-offset: 6px;
+            text-decoration-thickness: 2px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-1);
+        }
+
+        .hero-link:hover {
+            color: var(--accent-2);
+        }
+
+        .hero-right {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 3rem;
+            position: relative;
+        }
+
+        .hero-image-wrapper {
+            background: transparent;
+            border: 3px solid var(--card-border);
+            width: 350px;
+            height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-image-wrapper i {
+            font-size: 10rem;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .handwriting {
+            font-family: 'Caveat', cursive;
+            color: var(--accent-2);
+            font-size: 2.5rem;
+            position: absolute;
+            bottom: -2rem;
+            right: -3rem;
+            transform: rotate(-10deg);
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        .hero-nav {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            font-weight: 500;
+            font-size: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .hero-nav a {
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        .hero-nav a:hover {
+            color: var(--accent-1);
+        }
+
+        .glass-panel {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            backdrop-filter: blur(16px);
+            padding: 4rem;
+            margin: 4rem auto;
+            max-width: 1400px;
+            width: 90%;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* --- STATS SECTION --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-box {
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding-right: 2rem;
+        }
+
+        .stat-box:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Offset the second stat slightly */
+        .stat-box:nth-child(2) {
+            margin-top: 3rem;
+        }
+
+        /* --- PROCESS SECTION --- */
+        .pill-badge {
+            border: 1px solid var(--accent-1);
+            color: var(--accent-1);
+            background: rgba(59, 130, 246, 0.1);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 4rem;
+        }
+
+        .section-title span {
+            color: var(--accent-2);
+        }
+
+        .process-list {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .process-item {
+            display: grid;
+            grid-template-columns: 100px 1fr 1fr;
+            padding: 2.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            align-items: start;
+        }
+
+        .process-num {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent-1);
+        }
+
+        .process-name {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .process-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* --- DARK ABOUT SECTION --- */
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 2rem;
+        }
+
+        .about-desc {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* --- CIRCLE BUTTONS --- */
+        .bottom-circles {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .circle-dark {
+            width: 250px;
+            height: 250px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: 'Caveat', cursive;
+            font-size: 3rem;
+            color: var(--accent-1);
+            transform: translateX(20px);
+            z-index: 2;
+        }
+
+        .circle-light {
+            width: 200px;
+            height: 200px;
+            background: transparent;
+            border: 2px solid var(--accent-2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            transform: translateX(-20px);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+        }
+
+        .circle-light:hover {
+            background: rgba(139, 92, 246, 0.2);
+            cursor: pointer;
+            color: #fff;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .section-title,
+            .about-title {
+                font-size: 2.5rem;
+            }
+
+            .intro-hero,
+            .about-section,
+            .process-item {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .stat-box {
+                border: none;
+                padding: 0;
+            }
+
+            .stat-box:nth-child(2) {
+                margin-top: 0;
+            }
+
+            .hero-right {
+                justify-content: flex-start;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .glass-panel {
+                padding: 2rem;
+                margin: 2rem auto;
+            }
+
+            .process-item {
+                gap: 1rem;
+            }
+
+            .bottom-circles {
+                flex-direction: column;
+                gap: 1rem;
+                transform: none;
+                padding-bottom: 5rem;
+            }
+
+            .circle-dark,
+            .circle-light {
+                transform: none;
+                border-radius: 20px;
+                width: 100%;
+                height: 100px;
+            }
+        }
+    </style>
 </head>
+
 <body>
+
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><i class="fa-solid fa-landmark-dome"></i> Election<b>Portal</b></a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="html/ethiopia.html">Leaders</a></li>
+                <li><a href="html/parties.html">Parties</a></li>
+                <li><a href="html/map.html">Map</a></li>
+                <li><a href="html/analytics.html">Analytics</a></li>
+                <li><a href="html/timeline.html">Timeline</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="background-blob blob-1"></div>
     <div class="background-blob blob-2"></div>
-    
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>America's Governors</h1>
-            <p>Follow state leaders pursuing bipartisan solutions to improve lives.</p>
-            <div class="search-container">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <input type="text" id="searchInput" placeholder="Search by name or state..." autocomplete="off">
+    <section class="intro-hero">
+        <div class="hero-left">
+            <h1 class="hero-title">
+                TRACK ELECTIONS.<br>EMPOWER VOTERS.
+                <span class="amharic-sub">የፖለቲካ ማውጫ 2018</span>
+            </h1>
+            <a href="html/ethiopia.html" class="hero-link">Explore the Directory <i
+                    class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-right">
+            <div class="hero-image-wrapper">
+                <i class="fa-solid fa-fingerprint"></i>
+                <div class="handwriting">Your voting<br>new BFF</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="glass-panel">
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">11+</div>
+                <div class="stat-label">Administrative Regions Assessed and Mapped</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">30+</div>
+                <div class="stat-label">Registered Political Parties Monitored</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Politicians and Key Officials Evaluated</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Independent Election</div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <main class="container">
-        <div id="loader" class="loader">
-            <div class="spinner"></div>
-            <p>Loading Directory...</p>
-        </div>
-        
-        <div class="grid" id="governorsGrid">
-            <!-- Cards will be injected here by app.js -->
-        </div>
-        
-        <div id="noResults" class="no-results hidden">
-            <i class="fa-regular fa-face-frown-open"></i>
-            <h3>No Governors Found</h3>
-            <p>Try adjusting your search terms.</p>
-        </div>
-    </main>
+    <!-- PROCESS SECTION -->
+    <section class="glass-panel">
+        <div class="pill-badge">Features</div>
+        <h2 class="section-title">HOW WE EMPOWER<br>YOUR VOTE<span>.</span></h2>
 
-    <footer>
-        <p>&copy; 2026 America's Governors Directory. A responsive UI portfolio project.</p>
+        <div class="process-list">
+            <div class="process-item">
+                <div class="process-num">01</div>
+                <div class="process-name">Deep Profiles</div>
+                <div class="process-desc">Access comprehensive biographical backgrounds, official social media handles,
+                    and performance summaries of active political figures.</div>
+            </div>
+            <div class="process-item">
+                <div class="process-num">02</div>
+                <div class="process-name">Interactive Geo-Map</div>
+                <div class="process-desc">Explore our custom TopoJSON mapping integration to filter leaders and
+                    registered parties actively campaigning in your specific region.</div>
+            </div>
+            <div class="process-item">
+                <div class="process-num">03</div>
+                <div class="process-name">Live Analytics</div>
+                <div class="process-desc">Gain statistical insights through our real-time visual charts analyzing party
+                    categories, influence, and digital footprints.</div>
+            </div>
+            <div class="process-item">
+                <div class="process-num">04</div>
+                <div class="process-name">Election Timeline</div>
+                <div class="process-desc">Stay informed with the live 2026 General Election countdown, voter
+                    registration deadlines, and crucial democratic milestones.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="glass-panel about-section">
+        <div>
+            <div class="pill-badge">About the Portal</div>
+            <h2 class="about-title">WHO WE ARE AND HOW CAN WE HELP?</h2>
+            <p class="about-desc">We are an independent data transparency initiative committed to providing Ethiopian
+                citizens with accessible, accurate, and structured insights ahead of the democratic elections.</p>
+            <ul
+                style="list-style: none; display:flex; flex-direction:column; gap:0.5rem; font-size:1.1rem; color:var(--text-muted);">
+                <li><i class="fa-solid fa-check" style="color:var(--accent-1); margin-right: 0.5rem;"></i> Live Data
+                    Directories</li>
+                <li><i class="fa-solid fa-check" style="color:var(--accent-1); margin-right: 0.5rem;"></i> Data
+                    Visualizations & Analytics</li>
+                <li><i class="fa-solid fa-check" style="color:var(--accent-1); margin-right: 0.5rem;"></i> Immutable
+                    Profile Histories</li>
+                <li><i class="fa-solid fa-check" style="color:var(--accent-1); margin-right: 0.5rem;"></i> Secure
+                    Non-Partisan Infrastructure</li>
+            </ul>
+        </div>
+        <div style="text-align:center;">
+            <i class="fa-solid fa-landmark-dome" style="font-size: 13rem; color: var(--card-border);"></i>
+        </div>
+    </section>
+
+
+    <footer class="pro-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3><i class="fa-solid fa-landmark-dome"></i> Election<b>Portal</b></h3>
+                <p>Empowering voters through transparent, accessible open-data civic technology built for the 2026
+                    Ethiopian General Election.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="ethiopia.html">Leaders Directory</a></li>
+                    <li><a href="parties.html">Political Parties</a></li>
+                    <li><a href="map.html">Interactive Map</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="analytics.html">Analytics</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="#">API Documentation</a></li>
+                    <li><a href="https://github.com/Abel-Berhane-web/governers" target="_blank">Open Source Github</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Election Portal civic project. Open Access Data.</p>
+        </div>
     </footer>
 
-    <script src="data.js"></script>
-    <script src="app.js"></script>
 </body>
+
 </html>

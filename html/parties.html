@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethiopian Political Parties | Directory</title>
+    <meta name="description" content="List of active political parties participating in the Ethiopian election.">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .party-card {
+            background: rgba(45, 55, 72, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .party-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(45, 55, 72, 0.6);
+        }
+
+        .party-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(88, 101, 242, 0.2), rgba(235, 69, 158, 0.2));
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            color: var(--text-primary);
+        }
+
+        .type-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(88, 101, 242, 0.3);
+        }
+
+        .party-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .party-amharic {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .party-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            padding: 0.6rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+        }
+
+    </style>
+    </head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo"><i class="fa-solid fa-landmark-dome"></i> Election<b>Portal</b></a>
+            <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="ethiopia.html">Leaders</a></li>
+                <li><a href="parties.html" class="active">Parties</a></li>
+                <li><a href="map.html">Map</a></li>
+                <li><a href="analytics.html">Analytics</a></li>
+                <li><a href="timeline.html">Timeline</a></li>
+            </ul>
+                    </div>
+        </div>
+    </nav>
+
+    <div class="background-blob blob-1"></div>
+    <div class="background-blob blob-2"></div>
+    
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Ethiopian Political Parties</h1>
+            <p>Official directory of parties, regional fronts, and coalitions participating in the election.</p>
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search by name, amharic, or region..." autocomplete="off">
+            </div>
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="All">All Parties</button>
+                <button class="filter-btn" data-filter="Country-wide">Country-wide</button>
+                <button class="filter-btn" data-filter="Regional">Regional Parties</button>
+                <button class="filter-btn" data-filter="Front">Fronts</button>
+                <button class="filter-btn" data-filter="Coalition">Coalitions</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="grid" id="partiesGrid">
+            <!-- Cards injected by parties_app.js -->
+        </div>
+        
+        <div id="noResults" class="no-results hidden">
+            <i class="fa-regular fa-face-frown-open"></i>
+            <h3>No Parties Found</h3>
+            <p>Try adjusting your search terms or filters.</p>
+        </div>
+    </main>
+
+    
+    <footer class="pro-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3><i class="fa-solid fa-landmark-dome"></i> Election<b>Portal</b></h3>
+                <p>Empowering voters through transparent, accessible open-data civic technology built for the 2026 Ethiopian General Election.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="ethiopia.html">Leaders Directory</a></li>
+                    <li><a href="parties.html">Political Parties</a></li>
+                    <li><a href="map.html">Interactive Map</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="analytics.html">Analytics</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="#">API Documentation</a></li>
+                    <li><a href="https://github.com/Abel-Berhane-web/governers" target="_blank">Open Source Github</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Election Portal civic project. Open Access Data.</p>
+        </div>
+    </footer>
+        <script src="../js/parties_data.js"></script>
+    <script src="../js/parties_app.js"></script>
+</body>
+</html>
