@@ -191,7 +191,7 @@ body {
 
 /* Glassmorphism Card Style */
 .card {
-    background: var(--card-bg);
+    background: transparent;
     border: 1px solid var(--card-border);
     border-radius: 20px;
     padding: 2rem 1.5rem;
@@ -221,7 +221,7 @@ body {
 .card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
-    background: rgba(30, 41, 59, 0.85);
+    background: transparent;
 }
 
 .card:hover::before {
@@ -526,7 +526,7 @@ body {
 .profile-detail-container {
     max-width: 900px;
     margin: 3rem auto;
-    background: var(--card-bg);
+    background: transparent;
     border: 1px solid var(--card-border);
     border-radius: 20px;
     padding: 3rem;

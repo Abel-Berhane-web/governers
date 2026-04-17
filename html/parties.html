@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .party-card {
-            background: rgba(45, 55, 72, 0.4);
+            background: transparent;
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -30,12 +31,12 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
-        
+
         .party-card:hover {
             transform: translateY(-10px) scale(1.02);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             border-color: rgba(255, 255, 255, 0.2);
-            background: rgba(45, 55, 72, 0.6);
+            background: transparent;
         }
 
         .party-icon-wrapper {
@@ -59,6 +60,7 @@
             background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
             color: white;
             padding: 0.3rem 0.8rem;
+            border: 1px solid var(--card-border);
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 600;
@@ -118,36 +120,37 @@
             border-color: var(--primary-color);
             box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
         }
-
     </style>
-    </head>
+</head>
+
 <body>
     <nav class="top-nav">
         <div class="nav-container">
             <a href="../index.html" class="nav-logo"><i class="fa-solid fa-landmark-dome"></i> Election<b>Portal</b></a>
             <div class="nav-right">
-            <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="ethiopia.html">Leaders</a></li>
-                <li><a href="parties.html" class="active">Parties</a></li>
-                <li><a href="map.html">Map</a></li>
-                <li><a href="analytics.html">Analytics</a></li>
-                <li><a href="timeline.html">Timeline</a></li>
-            </ul>
-                    </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="ethiopia.html">Leaders</a></li>
+                    <li><a href="parties.html" class="active">Parties</a></li>
+                    <li><a href="map.html">Map</a></li>
+                    <li><a href="analytics.html">Analytics</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
     <div class="background-blob blob-1"></div>
     <div class="background-blob blob-2"></div>
-    
+
     <header class="hero">
         <div class="hero-content">
             <h1>Ethiopian Political Parties</h1>
             <p>Official directory of parties, regional fronts, and coalitions participating in the election.</p>
             <div class="search-container">
                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <input type="text" id="searchInput" placeholder="Search by name, amharic, or region..." autocomplete="off">
+                <input type="text" id="searchInput" placeholder="Search by name, amharic, or region..."
+                    autocomplete="off">
             </div>
             <div class="filter-container">
                 <button class="filter-btn active" data-filter="All">All Parties</button>
@@ -163,7 +166,7 @@
         <div class="grid" id="partiesGrid">
             <!-- Cards injected by parties_app.js -->
         </div>
-        
+
         <div id="noResults" class="no-results hidden">
             <i class="fa-regular fa-face-frown-open"></i>
             <h3>No Parties Found</h3>
@@ -171,12 +174,13 @@
         </div>
     </main>
 
-    
+
     <footer class="pro-footer">
         <div class="footer-container">
             <div class="footer-brand">
                 <h3><i class="fa-solid fa-landmark-dome"></i> Election<b>Portal</b></h3>
-                <p>Empowering voters through transparent, accessible open-data civic technology built for the 2026 Ethiopian General Election.</p>
+                <p>Empowering voters through transparent, accessible open-data civic technology built for the 2026
+                    Ethiopian General Election.</p>
             </div>
             <div class="footer-links">
                 <h4>Quick Links</h4>
@@ -193,7 +197,8 @@
                     <li><a href="analytics.html">Analytics</a></li>
                     <li><a href="timeline.html">Timeline</a></li>
                     <li><a href="#">API Documentation</a></li>
-                    <li><a href="https://github.com/Abel-Berhane-web/governers" target="_blank">Open Source Github</a></li>
+                    <li><a href="https://github.com/Abel-Berhane-web/governers" target="_blank">Open Source Github</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -201,7 +206,8 @@
             <p>&copy; 2026 Election Portal civic project. Open Access Data.</p>
         </div>
     </footer>
-        <script src="../js/parties_data.js"></script>
+    <script src="../js/parties_data.js"></script>
     <script src="../js/parties_app.js"></script>
 </body>
+
 </html>

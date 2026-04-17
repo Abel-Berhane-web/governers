@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +28,7 @@
             margin: 0 auto 2rem auto;
             border-radius: 20px;
             overflow: hidden;
-            background: rgba(45, 55, 72, 0.4);
+            background: transparent;
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -41,7 +42,7 @@
             margin-bottom: 2rem;
             font-size: 1.1rem;
         }
-        
+
         .results-header {
             text-align: center;
             margin-top: 3rem;
@@ -62,30 +63,36 @@
             text-align: center;
             transition: all 0.3s ease;
         }
-        
+
         .party-icon-wrapper {
-            width: 60px; height: 60px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background: linear-gradient(135deg, rgba(88, 101, 242, 0.2), rgba(235, 69, 158, 0.2));
-            display: flex; justify-content: center; align-items: center;
-            margin-bottom: 1rem; font-size: 2rem; color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: var(--text-primary);
         }
     </style>
-    </head>
+</head>
+
 <body>
     <nav class="top-nav">
         <div class="nav-container">
             <a href="../index.html" class="nav-logo"><i class="fa-solid fa-landmark-dome"></i> Election<b>Portal</b></a>
             <div class="nav-right">
-            <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="ethiopia.html">Leaders</a></li>
-                <li><a href="parties.html">Parties</a></li>
-                <li><a href="map.html" class="active">Map</a></li>
-                <li><a href="analytics.html">Analytics</a></li>
-                <li><a href="timeline.html">Timeline</a></li>
-            </ul>
-                    </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="ethiopia.html">Leaders</a></li>
+                    <li><a href="parties.html">Parties</a></li>
+                    <li><a href="map.html" class="active">Map</a></li>
+                    <li><a href="analytics.html">Analytics</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -95,16 +102,19 @@
     <header class="hero" style="padding-bottom: 2rem;">
         <div class="hero-content">
             <h1>Interactive Regional Map</h1>
-            <p>Click on any region (e.g. Oromia, Amhara, Tigray) to filter the politicians and parties operating within it.</p>
+            <p>Click on any region (e.g. Oromia, Amhara, Tigray) to filter the politicians and parties operating within
+                it.</p>
         </div>
     </header>
 
     <main class="container">
-        <p class="map-instructions"><i class="fa-solid fa-hand-pointer"></i> Tap map districts below to discover regional profiles.</p>
+        <p class="map-instructions"><i class="fa-solid fa-hand-pointer"></i> Tap map districts below to discover
+            regional profiles.</p>
         <div id="map-container"></div>
-        
-        <h2 id="regionTitle" class="results-header" style="display: none;">Results for <span id="selectedRegion" style="color:var(--primary-color);">Region</span></h2>
-        
+
+        <h2 id="regionTitle" class="results-header" style="display: none;">Results for <span id="selectedRegion"
+                style="color:var(--primary-color);">Region</span></h2>
+
         <div class="grid" id="mapResultsGrid">
             <!-- Dynamically injected results -->
         </div>
@@ -116,12 +126,13 @@
         </div>
     </main>
 
-    
+
     <footer class="pro-footer">
         <div class="footer-container">
             <div class="footer-brand">
                 <h3><i class="fa-solid fa-landmark-dome"></i> Election<b>Portal</b></h3>
-                <p>Empowering voters through transparent, accessible open-data civic technology built for the 2026 Ethiopian General Election.</p>
+                <p>Empowering voters through transparent, accessible open-data civic technology built for the 2026
+                    Ethiopian General Election.</p>
             </div>
             <div class="footer-links">
                 <h4>Quick Links</h4>
@@ -138,7 +149,8 @@
                     <li><a href="analytics.html">Analytics</a></li>
                     <li><a href="timeline.html">Timeline</a></li>
                     <li><a href="#">API Documentation</a></li>
-                    <li><a href="https://github.com/Abel-Berhane-web/governers" target="_blank">Open Source Github</a></li>
+                    <li><a href="https://github.com/Abel-Berhane-web/governers" target="_blank">Open Source Github</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -146,8 +158,9 @@
             <p>&copy; 2026 Election Portal civic project. Open Access Data.</p>
         </div>
     </footer>
-        <script src="../js/ethiopia_data.js"></script>
+    <script src="../js/ethiopia_data.js"></script>
     <script src="../js/parties_data.js"></script>
     <script src="../js/map_app.js"></script>
 </body>
+
 </html>
